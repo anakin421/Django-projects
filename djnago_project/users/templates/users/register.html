@@ -1,0 +1,29 @@
+{% extends "blog/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <div class="content-section">
+        <form method="POST">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Join Today</legend>
+                {{ form|crispy }}
+            </fieldset>
+            <div class="form-group">
+                <button class="btn btn-outline-info" type="submit">Sign Up</button>
+            </div>
+            <div class="mt-2 mb-2">
+                    <b class= "mr-2">Login with:</b>
+                    <a href="{% url 'social:begin' 'github'%}" class="btn btn-warning">Github</a>
+                    <a href="{% url 'social:begin' 'google-oauth2'%}" class="btn btn-danger">Google</a>
+                    <a href="{% url 'social:begin' 'twitter'%}" class="btn btn-info">Twitter</a>
+                    <a href="{% url 'social:begin' 'facebook'%}" class="btn btn-primary">Facebook</a>
+            </div>
+
+        </form>
+        <div class="border-top pt-3">
+            <small class="text-muted">
+                Already Have An Account? <a class="ml-2" href="{% url 'login' %}">Sign In</a>
+            </small>
+        </div>
+    </div>
+{% endblock content %}
